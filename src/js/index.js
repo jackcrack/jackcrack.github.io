@@ -78,7 +78,6 @@ const onReady = audioBuffer => {
   }
   loader.classList.remove( 'show' );
   bg.classList.add( 'run' );
-  player.seekTo( 65 );
   audio.currentTime = 0;
 	audio.volume = 1;
 	document.getElementById( 'shader' ).classList.add( 'fade' );
@@ -116,7 +115,6 @@ const onClick = () => {
   loader.classList.add( 'show' );
 	player.mute();
   audio.volume = 0;
-	player.seekTo( 65 );
 	player.playVideo();
   audio.play();
 };
