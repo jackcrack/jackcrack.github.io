@@ -4,7 +4,7 @@ let max;
 let data;
 let player;
 let isPlaying;
-let scaler = 15;
+let scaler = 5;
 
 const bg = document.getElementById( 'wrap' );
 const audio = document.getElementById( 'audio' );
@@ -56,10 +56,10 @@ const onDraw = () => {
     const blur = parseFloat( fixed, 10 ) * scaler;
     const adjustedBlur = Math.max( blur, 0 );
     const maxedBlur = adjustedBlur * 5;
-    bg.style.filter = `blur(${ adjustedBlur }px)`;
+		bg.style.filter = `blur(${ adjustedBlur }px)`;
     style.innerHTML = `
-      #wrap:before {background: repeating-radial-gradient(circle, #000, transparent ${ maxedBlur }%)};
-      #wrap:after {background: repeating-conic-gradient(from 235deg, #000, transparent ${ maxedBlur }deg)};
+      #wrap:before {background: repeating-radial-gradient(circle, #000, transparent ${ maxedBlur }%)}
+      #wrap:after {background: repeating-conic-gradient(from 235deg, #000, transparent ${ maxedBlur }deg)}
     `;
   }
   window.requestAnimationFrame( onDraw );
@@ -104,6 +104,7 @@ window.onStateChange = () => {
     }
   }
   else if ( state === 0 ) {
+		console.log('end');
     isPlaying = false;
     onEnded();
   }
@@ -115,6 +116,7 @@ const onClick = () => {
   loader.classList.add( 'show' );
 	player.mute();
   audio.volume = 0;
+	player.seekTo( 10 );
 	player.playVideo();
   audio.play();
 };
