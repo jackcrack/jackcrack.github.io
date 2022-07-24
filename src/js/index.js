@@ -68,9 +68,14 @@ const onDraw = () => {
 const onEnded = () => {
   audio.removeEventListener( 'ended', onEnded );
   bg.classList.remove( 'run' );
-  bg.classList.add( 'ready' );
-  bg.addEventListener( 'click', onClick );
-  document.getElementById( 'shader' ).classList.remove( 'fade' );
+  window.onStateChange = () => {};
+  player.pauseVideo();
+  bg.style.cursor = 'auto';
+  bg.style.opacity = 0;
+  bg.style.visibility = 'hidden';
+  player.destroy();
+  player = null;
+  data = null;
 };
 
 const onReady = audioBuffer => {
@@ -109,6 +114,8 @@ window.onStateChange = () => {
     onEnded();
   }
 };
+
+window.endthis = onEnded;
 
 const onClick = () => {
   bg.removeEventListener( 'click', onClick );
