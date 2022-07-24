@@ -4,7 +4,7 @@ let max;
 let data;
 let player;
 let isPlaying;
-let scaler = 20;
+let scaler = 15;
 
 const bg = document.getElementById( 'wrap' );
 const audio = document.getElementById( 'audio' );
