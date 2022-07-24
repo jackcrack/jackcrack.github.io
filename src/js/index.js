@@ -56,7 +56,7 @@ const onDraw = () => {
     const blur = parseFloat( fixed, 10 ) * scaler;
     const adjustedBlur = Math.max( blur, 0 );
     const maxedBlur = adjustedBlur * 5;
-		bg.style.filter = `blur(${ adjustedBlur }px)`;
+    bg.style.filter = `blur(${ adjustedBlur }px)`;
     style.innerHTML = `
       #wrap:before {background: repeating-radial-gradient(circle, #000, transparent ${ maxedBlur }%)}
       #wrap:after {background: repeating-conic-gradient(from 235deg, #000, transparent ${ maxedBlur }deg)}
@@ -66,11 +66,11 @@ const onDraw = () => {
 };
 
 const onEnded = () => {
-	audio.removeEventListener( 'ended', onEnded );
+  audio.removeEventListener( 'ended', onEnded );
   bg.classList.remove( 'run' );
   bg.classList.add( 'ready' );
   bg.addEventListener( 'click', onClick );
-	document.getElementById( 'shader' ).classList.remove( 'fade' );
+  document.getElementById( 'shader' ).classList.remove( 'fade' );
 };
 
 const onReady = audioBuffer => {
@@ -80,8 +80,8 @@ const onReady = audioBuffer => {
   loader.classList.remove( 'show' );
   bg.classList.add( 'run' );
   audio.currentTime = 0;
-	audio.volume = 1;
-	document.getElementById( 'shader' ).classList.add( 'fade' );
+  audio.volume = 1;
+  document.getElementById( 'shader' ).classList.add( 'fade' );
   document.head.appendChild( style );
   window.requestAnimationFrame( onDraw );
 };
@@ -97,7 +97,7 @@ const onPlay = () => {
 };
 
 window.onStateChange = () => {
-	const state = player.getPlayerState();
+  const state = player.getPlayerState();
   if( state === 1 ) {
     if( ! isPlaying ) {
       isPlaying = true;
@@ -114,11 +114,11 @@ const onClick = () => {
   bg.removeEventListener( 'click', onClick );
   bg.classList.remove( 'ready' );
   loader.classList.add( 'show' );
-	player.mute();
+  player.mute();
   audio.volume = 0;
-	audio.addEventListener( 'ended', onEnded );
-	player.seekTo( 10 );
-	player.playVideo();
+  audio.addEventListener( 'ended', onEnded );
+  player.seekTo( 10 );
+  player.playVideo();
   audio.play();
 };
 
