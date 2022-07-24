@@ -66,6 +66,7 @@ const onDraw = () => {
 };
 
 const onEnded = () => {
+	audio.removeEventListener( 'ended', onEnded );
   bg.classList.remove( 'run' );
   bg.classList.add( 'ready' );
   bg.addEventListener( 'click', onClick );
@@ -104,7 +105,6 @@ window.onStateChange = () => {
     }
   }
   else if ( state === 0 ) {
-		console.log('end');
     isPlaying = false;
     onEnded();
   }
@@ -116,6 +116,7 @@ const onClick = () => {
   loader.classList.add( 'show' );
 	player.mute();
   audio.volume = 0;
+	audio.addEventListener( 'ended', onEnded );
 	player.seekTo( 10 );
 	player.playVideo();
   audio.play();
