@@ -66,14 +66,18 @@ const onDraw = () => {
 };
 
 const onEnded = () => {
+  window.cancelAnimationFrame( onDraw );
   audio.removeEventListener( 'ended', onEnded );
+  audio.pause();
   bg.classList.remove( 'run' );
   window.onStateChange = () => {};
   player.pauseVideo();
   bg.style.cursor = 'auto';
   bg.style.opacity = 0;
   bg.style.visibility = 'hidden';
-  player.destroy();
+  try {
+    player.destroy();
+  } catch(e) {}
   player = null;
   data = null;
 };
@@ -114,8 +118,6 @@ window.onStateChange = () => {
     onEnded();
   }
 };
-
-window.endthis = onEnded;
 
 const onClick = () => {
   bg.removeEventListener( 'click', onClick );

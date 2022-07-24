@@ -81,6 +81,7 @@ module.exports = {
       'react/jsx-uses-vars': 0,
       'no-useless-concat': 0,
       'no-template-curly-in-string': 0,
+      'no-empty': 0,
     },
   },
 };
